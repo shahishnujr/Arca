@@ -1,10 +1,12 @@
+"use client";
+
 import Link from "next/link";
 
 export const Navbar = () => {
   return (
-    <nav className="w-full bg-black text-white px-6 py-4 fixed top-0 left-0 z-50">
+    <nav className="w-full bg-gray-900 text-white px-6 py-4 shadow-lg fixed top-0 left-0">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold">
+        <Link href="/" className="text-2xl font-bold text-primary">
           Blood Donation
         </Link>
         <div className="space-x-6">

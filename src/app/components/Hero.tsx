@@ -1,25 +1,46 @@
+"use client";
+
+import { useWallet } from "@/contexts/useWallet";
+import { useRouter } from "next/navigation";
+
 export const Hero = () => {
+  const { account, connect } = useWallet();
+  const router = useRouter();
+
+  const handleDonateClick = () => {
+    if (!account) {
+      alert("Please connect your wallet first!");
+      return;
+    }
+    // Redirect to login page instead of donate
+    router.push("/login");
+  };
+
   return (
-    <section className="relative w-full min-h-[50vh] flex flex-col justify-center items-center text-center">
-      <h1 className="text-5xl font-bold mb-6 text-primary">
-        Donate Blood, Save Lives
-      </h1>
-      <p className="text-lg max-w-2xl mb-8 text-foreground">
-        Your small act of kindness can save lives. Join our mission today and
-        make a difference in someone's life.
+    <section className="text-center py-20">
+      <h1 className="text-5xl font-bold mb-6 text-primary">Donate Blood</h1>
+      <p className="text-lg max-w-2xl mx-auto mb-8 text-gray-300">
+        Join our mission to save lives. Register as a donor and contribute to
+        making the world a better place.
       </p>
-      <button className="bg-primary hover:bg-highlight px-8 py-3 rounded-md shadow-lg transition-transform transform hover:scale-105">
-        Become a Donor
+      {account ? (
+        <div className="mb-6">
+          <p className="text-lg">Connected Wallet: {account}</p>
+        </div>
+      ) : (
+        <button
+          onClick={connect}
+          className="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-lg transition mb-6"
+        >
+          Connect MetaMask Wallet
+        </button>
+      )}
+      <button
+        onClick={handleDonateClick}
+        className="bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-lg transition"
+      >
+        Donate Now
       </button>
-      {/* Floating Circles */}
-      <div
-        className="absolute top-10 left-10 w-24 h-24 rounded-full bg-highlight opacity-30 animate-pulse"
-        style={{ animationDuration: "4s" }}
-      ></div>
-      <div
-        className="absolute bottom-20 right-20 w-32 h-32 rounded-full bg-primary opacity-20 animate-pulse"
-        style={{ animationDuration: "6s" }}
-      ></div>
     </section>
   );
 };

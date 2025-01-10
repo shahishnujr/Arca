@@ -1,31 +1,47 @@
+"use client";
+
 export default function ContactPage() {
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert("Your message has been sent!");
+  };
+
   return (
-    <div className="container mx-auto text-center py-20 relative z-10">
-      <h1 className="text-4xl font-bold text-primary mb-8">Contact Us</h1>
-      <p className="text-lg mb-8 text-foreground max-w-xl mx-auto">
-        Have questions or want to get in touch? Fill out the form below and
-        we’ll get back to you as soon as possible.
-      </p>
-      <form className="bg-secondary text-left p-6 rounded-lg shadow-lg max-w-md mx-auto">
+    <div className="container mx-auto py-20">
+      <h1 className="text-4xl font-bold text-primary mb-6 text-center">
+        Contact Us
+      </h1>
+      <form
+        onSubmit={handleFormSubmit}
+        className="max-w-md mx-auto bg-gray-800 p-6 rounded-lg shadow-lg"
+      >
         <label className="block mb-4">
-          <span className="text-foreground">Your Name</span>
+          <span className="text-white">Your Name</span>
           <input
             type="text"
-            placeholder="John Doe"
-            className="mt-1 block w-full px-4 py-2 rounded-md bg-gray-800 text-foreground border border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full px-4 py-2 mt-1 bg-gray-900 text-white rounded-md"
+            required
           />
         </label>
         <label className="block mb-4">
-          <span className="text-foreground">Your Email</span>
+          <span className="text-white">Your Email</span>
           <input
             type="email"
-            placeholder="example@example.com"
-            className="mt-1 block w-full px-4 py-2 rounded-md bg-gray-800 text-foreground border border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full px-4 py-2 mt-1 bg-gray-900 text-white rounded-md"
+            required
           />
+        </label>
+        <label className="block mb-4">
+          <span className="text-white">Message</span>
+          <textarea
+            className="w-full px-4 py-2 mt-1 bg-gray-900 text-white rounded-md"
+            rows={4}
+            required
+          ></textarea>
         </label>
         <button
           type="submit"
-          className="w-full bg-primary hover:bg-highlight text-white font-bold py-2 px-4 rounded-md"
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md"
         >
           Send Message
         </button>
