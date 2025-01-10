@@ -1,6 +1,7 @@
 "use client";
 
 import { Hero } from "@/app/components/Hero";
+
 import { useWallet } from "@/contexts/useWallet";
 
 export default function HomePage() {
