@@ -2,7 +2,7 @@
 
 import { useWallet } from "@/contexts/useWallet";
 import { Hero } from "@/app/components/Hero";
-
+//hrithik
 export default function HomePage() {
   const { account, connect, error } = useWallet(); // MetaMask wallet context
 
